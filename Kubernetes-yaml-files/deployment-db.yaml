@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: db-deployment
+   labels:
+      name: db-deploy
+      type: test-d
+spec:
+   template:
+      metadata:
+         name: db
+         labels:
+            type: test-d
+      spec:
+         containers:
+         - name: db-container
+           image: akashdro/mp-db-postgress
+   
+   replicas: 1
+   selector:
+      matchLabels:
+         type: test-d
